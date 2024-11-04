@@ -1,0 +1,155 @@
+<?php
+
+
+//CREATE DATABASE
+CREATE DATABASE databasename;
+
+//DROP DATABASE
+DROP DATABASE databasename;
+
+//CREATE TABLE
+CREATE TABLE table_name (
+  column1 datatype,
+  column2 datatype,
+  column3 datatype,
+ ....
+);
+CREATE TABLE Persons (
+  PersonID int,
+  LastName varchar(255),
+  FirstName varchar(255),
+  Address varchar(255),
+  City varchar(255)
+);
+
+/// FOR CREATING PRIMARY KEY IN EXISTING 
+CREATE TABLE Persons (
+  ID int NOT NULL,
+  LastName varchar(255) NOT NULL,
+  FirstName varchar(255),
+  Age int,
+  PRIMARY KEY (ID)
+);
+
+/// FOR AUTO INCREMENT
+
+CREATE TABLE Persons (
+  Personid int NOT NULL AUTO_INCREMENT,
+  LastName varchar(255) NOT NULL,
+  FirstName varchar(255),
+  Age int,
+  PRIMARY KEY (Personid)
+);
+
+//FOR CHANGING DATA COULMN DETAILS
+//ADDITIONAL COLUMN
+ALTER TABLE table_name
+ADD column_name datatype;
+
+ALTER TABLE Customers
+ADD Email varchar(255);
+=========
+ALTER TABLE table_name
+DROP COLUMN column_name;
+
+ALTER TABLE Customers
+DROP COLUMN Email;
+=========
+
+//forms 
+
+
+<form action="welcome.php" method="POST">
+Name: <input type="text" name="name"><br>
+E-mail: <input type="text" name="email"><br>
+<input type="submit">
+</form>
+
+//how to create password base
+
+$str = 'This is an encoded string';
+echo base64_encode($str);
+echo base64_decode(base64_encode($str));
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "testdatabase";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password,$dbname);
+
+// Check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
+
+echo "<br>";
+
+//SELECT STATEMENT.
+$sql = "SELECT * FROM user ";
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    while($row = mysqli_fetch_assoc($result)) {
+      echo "id: " . $row["id"]. " - Name: " . $row["username"]. " " . $row["password"]. "<br>";
+    }
+  } else {
+    echo "0 results";
+  }
+
+// INSERT STATEMENT
+  $sql = "INSERT INTO MyGuests (firstname, lastname, email)
+VALUES ('John', 'Doe', 'john@example.com')";
+
+if (mysqli_query($conn, $sql)) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+
+
+// sql to delete a record
+$sql = "DELETE FROM MyGuests WHERE id=3";
+
+if (mysqli_query($conn, $sql)) {
+  echo "Record deleted successfully";
+} else {
+  echo "Error deleting record: " . mysqli_error($conn);
+}
+
+
+
+//UPDATE RECORD 
+
+$sql = "UPDATE MyGuests SET lastname='Doe' WHERE id=2";
+
+if (mysqli_query($conn, $sql)) {
+  echo "Record updated successfully";
+} else {
+  echo "Error updating record: " . mysqli_error($conn);
+}
+
+//REDIRECTION
+
+header("Location: https://example.com/myOtherPage.php");
+
+
+$cookie_name = "user";
+$cookie_value = "John Doe";
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+
+<?php
+    include("/home/user/php/database.php");
+?>
+?>
+<script>
+$.ajax({url:"www.google.com",
+  data:{userid:userid},
+  success:function(result){
+    $("#test").html(result);
+  }
+});create data of 100 rows 10 column. 
+using this fprmula concatenate,if,average,vlookup,averageif,countif,sum,sumif
+create 15 questions with difficulty of hard
